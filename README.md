@@ -156,9 +156,17 @@ A EULA License placeholder is included by default in in the `build/license.txt` 
 
 This will, based on default config, build a .deb for Linux or a NSIS for Windows. The taget can be picked by adding a flag to the `dist` item in the package.json. E.g. `"dist": "build --win"`
 
+If you have mobilecaddy-cli v2 installed you can use the following, where DEPLOY_ENV matches a name fom the `deployEnvs` attribute in the package.json
+
+```
+mobilecaddy desktop-build <DEPLOY_ENV>
+```
+
 ```
 npm run dist
 ```
+
+If you have a `build\exemsi.xml` and you're building for Windows then add the `<VERSION>` and `<DEPLOY-ENV>` placeholders in (and remove the output file attribute from .xml file), and you can then build with `mobilecaddy desktop-msi`
 
 # Post Install Running Options
 

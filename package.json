@@ -7,7 +7,11 @@
   "license": "MIT",
   "main": "main.js",
   "buildName": "BIZ001",
-  "loginEndpoint": "https://login.salesforce.com",
+  "loginEndpoint": "<LOGIN-ENDPOINT>",
+  "deployEnvs" : [
+    {"name": "Prod", "loginEndpoint": "https://login.salesforce.com"},
+    {"name": "Sandbox", "loginEndpoint": "https://test.salesforce.com"}
+  ],
   "salesforceApiVersion": "v30.0",
   "scripts": {
     "start": "electron .",
@@ -24,6 +28,12 @@
     "demo"
   ],
   "build": {
+    "files": [
+     "**/*",
+      "!CHANGELOG.md",
+      "!mc-build.log",
+      "!package.json.tmp"
+    ],
     "appId": "net.mobilecaddy.bizCaddy-desktop",
     "copyright": "Copyright © 2017 MobileCaddy",
     "productName": "BizCaddy",
@@ -48,7 +58,10 @@
       "legalTrademark": "BizCaddy is a trademark of MobileCaddy"
     },
     "nsis": {
-      "oneClick": false
+      "oneClick": true,
+      "perMachine": true,
+      "deleteAppDataOnUninstall": true,
+      "artifactName": "MobileCaddy-Demo-Setup-${version}-<LOGIN-ENDPOINT>.${ext}"
     }
   },
   "devDependencies": {
